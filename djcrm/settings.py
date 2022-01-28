@@ -1,19 +1,40 @@
 from pathlib import Path
 import environ
 
+# env = environ.Env(
+#     DEBUG=(bool, False)
+# )
+
+# READ_DOT_ENV_FILE = env.bool('READ_DOT_ENV_FILE', default=False)
+# if READ_DOT_ENV_FILE:
+#     environ.Env.read_env()
+
+# DEBUG = env('DEBUG')
+# SECRET_KEY = env('SECRET_KEY')
+
+# # Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+#############################################################
+import os
+
 env = environ.Env(
+    # set casting, default value
     DEBUG=(bool, False)
 )
 
-READ_DOT_ENV_FILE = env.bool('READ_DOT_ENV_FILE', default=False)
-if READ_DOT_ENV_FILE:
-    environ.Env.read_env()
+# Set the project base directory
 
+# Take environment variables from .env file
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+print("########################")
+print(os.path.join(BASE_DIR, '.env'))
+# False if not in os.environ because of casting above
 DEBUG = env('DEBUG')
-SECRET_KEY = env('SECRET_KEY')
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+# Raises Django's ImproperlyConfigured
+# exception if SECRET_KEY not in os.environ
+SECRET_KEY = env('SECRET_KEY')
 
 ALLOWED_HOSTS = ["djcrm-39ltj.ondigitalocean.app", "community.bestlifeseniorliving.com", "127.0.0.1"]
 
