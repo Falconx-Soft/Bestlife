@@ -36,7 +36,7 @@ DEBUG = env('DEBUG')
 # exception if SECRET_KEY not in os.environ
 SECRET_KEY = env('SECRET_KEY')
 
-ALLOWED_HOSTS = ["djcrm-39ltj.ondigitalocean.app", "community.bestlifeseniorliving.com", "127.0.0.1"]
+ALLOWED_HOSTS = ["*","djcrm-39ltj.ondigitalocean.app", "community.bestlifeseniorliving.com", "127.0.0.1"]
 
 
 # Application definition
